@@ -1,0 +1,82 @@
+/* Custom Global Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #333333;
+}
+
+/* Header & Navbar Styling */
+#header {
+    transition: all 0.3s ease;
+}
+
+.web-logo {
+    max-height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Hero Carousel */
+.hero-img {
+    height: 70vh;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (max-width: 768px) {
+    .hero-img {
+        height: 40vh;
+    }
+}
+
+/* Service Section */
+.service-image {
+    max-width: 80px;
+    height: auto;
+}
+
+#Services .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#Services .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* About Section */
+.performance-image {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Contact Form Styling */
+.max-width-form {
+    max-width: 700px;
+}
+
+.custom-input,
+.custom-textarea {
+    border: 1px solid #ced4da;
+    background-color: #f8f9fa;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.custom-textarea {
+    border-radius: 15px;
+}
+
+.custom-input:focus,
+.custom-textarea:focus {
+    background-color: #ffffff;
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Footer */
+#Footer {
+    font-size: 0.9rem;
+}
