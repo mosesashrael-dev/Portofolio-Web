@@ -1,36 +1,200 @@
-.web-logo{
-  border-radius: 100%;
-  width: 50px;
+/* Global & Typography */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #2b2d42;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, .navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.section-title {
+    letter-spacing: 1.5px;
+}
+
+.title-divider {
+    width: 60px;
+    height: 4px;
+    border-radius: 2px;
+    margin-top: 10px;
+}
+
+/* Navbar */
+.custom-navbar {
+    background-color: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 12px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.web-logo {
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border: 2px solid #dc3545;
+}
+
+.brand-text {
+    font-weight: 800;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+}
+
+.nav-link {
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+/* Hero Section */
+.hero-img {
+    height: 90vh;
+    min-height: 500px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.45) 100%);
+    z-index: 1;
+}
+
+.carousel-caption {
+    z-index: 2;
+    bottom: 0;
+    top: 0;
+}
+
+@media (max-width: 768px) {
+    .hero-img {
+        height: 70vh;
+    }
+    .carousel-caption h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Services Section */
+.service-section {
+    position: relative;
+    background-image: url("../img/images.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 100px 0;
+}
+
+.service-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.85);
+}
+
+.service-image {
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border: 3px solid #dc3545;
+    background-color: #fff;
+}
+
+.service-card {
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+.icon-box {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: rgba(220, 53, 69, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* About Section */
+#About {
+    background-color: #f8f9fa;
+}
+
+.performance-image {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.about-img-wrapper:hover .performance-image {
+    transform: scale(1.02);
+}
+
+/* Contact Section */
+.bg-contact {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.contact-card {
+    border-radius: 20px;
+}
+
+.custom-input,
+.custom-textarea {
+    border-radius: 12px;
+    border: 1px solid #dee2e6;
+    background-color: #f8f9fa;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.custom-input:focus,
+.custom-textarea:focus {
+    background-color: #ffffff;
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.2);
 }
 
 
-.service-image{
-  border-radius: 100%;
-  width: 100px; 
+#Footer {
+    background-color: #090d16;
+    border-top: 3px solid #dc3545;
 }
 
-.service-section{
-  padding-top: 30px;
-  background-image: url("../img/images.png");
-  background-size: cover;
-  background-attachment: fixed;
-  padding-block: 100px;
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    transition: all 0.3s ease;
 }
 
-.row{
-  padding-left: 10px;
-  padding-right: 10px;
+.social-icon:hover {
+    background-color: #dc3545;
+    color: #ffffff;
+    text-decoration: none;
+    transform: translateY(-3px);
 }
-
-#About{
-  background-color: aquamarine;
-  padding-bottom: 20px;
-}
-
-#Footer{
-  text-align: center;
-  background-color: orange;
-  height: 100px;
-  
-}
-
