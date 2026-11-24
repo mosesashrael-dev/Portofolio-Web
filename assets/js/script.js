@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 const targetSection = document.querySelector(targetId);
 
                 if (targetSection) {
-                   
                     document.querySelectorAll(".navbar-nav .nav-item").forEach((item) => {
                         item.classList.remove("active");
                     });
@@ -22,16 +21,13 @@ document.addEventListener("DOMContentLoaded", function () {
                         this.parentElement.classList.add("active");
                     }
 
-                   
                     const offsetTop = targetSection.offsetTop - navbarHeight + 5;
 
-                    
                     window.scrollTo({
                         top: offsetTop,
                         behavior: "smooth"
                     });
 
-                    
                     const navbarCollapse = document.querySelector(".navbar-collapse");
                     if (navbarCollapse.classList.contains("show")) {
                         $(".navbar-collapse").collapse("hide");
@@ -41,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-
+   
     window.addEventListener("scroll", function () {
         let currentSectionId = "";
 
@@ -64,24 +60,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // ==========================================
-    // 3. GRAFIK DATA DENGAN CHART.JS (SECTION ABOUT)
-    // ==========================================
+    
     const ctx = document.getElementById("performanceChart");
     if (ctx) {
-        // Data statis numerik (siap diganti dengan data database di tahap berikutnya)
-        const chartLabels = ["2021", "2022", "2023", "2024", "2025", "2026"];
-        const dataProyekSelesai = [12, 19, 25, 32, 40, 48];
-        const dataKepuasanKlien = [85, 88, 90, 92, 95, 98];
-
-        new Chart(ctx, {
+        const performanceChart = new Chart(ctx, {
             type: "bar",
             data: {
-                labels: chartLabels,
+                labels: [],
                 datasets: [
                     {
                         label: "Proyek Selesai",
-                        data: dataProyekSelesai,
+                        data: [],
                         backgroundColor: "rgba(220, 53, 69, 0.85)", // Merah tema racing
                         borderColor: "rgba(220, 53, 69, 1)",
                         borderWidth: 1,
@@ -89,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     },
                     {
                         label: "Skor Performa (%)",
-                        data: dataKepuasanKlien,
+                        data: [],
                         type: "line",
                         borderColor: "#0f172a", // Navy gelap
                         backgroundColor: "rgba(15, 23, 42, 0.1)",
@@ -102,6 +91,9 @@ document.addEventListener("DOMContentLoaded", function () {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                animation: {
+                    duration: 500
+                },
                 plugins: {
                     legend: {
                         position: "top"
@@ -115,5 +107,30 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         });
+
+        function updateChartRealtime() {
+            fetch("get_performa.php")
+                .then((response) => response.json())
+                .then((data) => {
+                    const isDataChanged =
+                        JSON.stringify(performanceChart.data.labels) !== JSON.stringify(data.labels) ||
+                        JSON.stringify(performanceChart.data.datasets[0].data) !== JSON.stringify(data.proyek) ||
+                        JSON.stringify(performanceChart.data.datasets[1].data) !== JSON.stringify(data.skor);
+
+                    if (isDataChanged) {
+                        performanceChart.data.labels = data.labels;
+                        performanceChart.data.datasets[0].data = data.proyek;
+                        performanceChart.data.datasets[1].data = data.skor;
+                        performanceChart.update();
+                    }
+                })
+                .catch((error) => console.error("Gagal memuat data grafik:", error));
+        }
+
+       
+        updateChartRealtime();
+
+        
+        setInterval(updateChartRealtime, 3000);
     }
 });
